@@ -7,7 +7,7 @@ export const BroadcastConsole: React.FC = () => {
   const [input, setInput] = useState("");
 
   useEffect(() => {
-    const ws = new WebSocket(`ws://${window.location.hostname}:3000`); // À adapter selon ton domaine
+    const ws = new WebSocket(`wss://${window.location.hostname}:3000`); // À adapter selon ton domaine
 
     ws.onmessage = (event) => {
       setMessages((prev) => [...prev, event.data]);
