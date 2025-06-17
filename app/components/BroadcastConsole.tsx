@@ -33,7 +33,7 @@ export function BroadcastConsole()  {
 
   const handleSend = async () => {
     try {
-      const res = await fetch(`${window.location.protocol}//${window.location.hostname}:3000/broadcast`, {
+      const res = await fetch(`${window.location.protocol}//${window.location.host}/broadcast`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: input }),
