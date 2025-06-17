@@ -22,7 +22,7 @@ export const BroadcastConsole: React.FC = () => {
 
   const handleSend = async () => {
     try {
-      const res = await fetch(`http://${window.location.hostname}:3000/broadcast`, {
+      const res = await fetch(`${window.location.protocol}://${window.location.hostname}:3000/broadcast`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: input }),
