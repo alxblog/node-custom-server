@@ -7,7 +7,7 @@ export const BroadcastConsole: React.FC = () => {
   const [input, setInput] = useState("");
 
   useEffect(() => {
-    const ws = new WebSocket("ws://localhost:3000"); // À adapter selon ton domaine
+    const ws = new WebSocket(`ws://${window.location.hostname}:3000`); // À adapter selon ton domaine
 
     ws.onmessage = (event) => {
       setMessages((prev) => [...prev, event.data]);
@@ -22,7 +22,7 @@ export const BroadcastConsole: React.FC = () => {
 
   const handleSend = async () => {
     try {
-      const res = await fetch("http://localhost:3000/broadcast", {
+      const res = await fetch(`http://${window.location.hostname}:3000/broadcast`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: input }),

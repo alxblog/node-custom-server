@@ -4,7 +4,7 @@ const BroadcastListener: React.FC = () => {
   const [messages, setMessages] = useState<string[]>([]);
 
   useEffect(() => {
-    const ws = new WebSocket("ws://localhost:3000"); // Adapter l’URL si nécessaire
+    const ws = new WebSocket(`ws://${window.location.host}:3000`); // Adapter l’URL si nécessaire
 
     ws.onmessage = (event) => {
       const data = event.data;
