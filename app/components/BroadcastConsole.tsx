@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { supportsVibrationAPI, wsUrl } from "~/components/url.client.ts";
+// import { supportsVibrationAPI, wsUrl } from "~/components/url.client.ts";
 
 
-// const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-// const host = window.location.host; 
-// const wsUrl = `${protocol}://${host}/ws`; // ou un sous-domaine : `${protocol}://ws.${host}`
 
 // const socket = new WebSocket(wsUrl);
 
@@ -14,9 +11,12 @@ export function BroadcastConsole()  {
   
   const [messages, setMessages] = useState<string[]>([]);
   const [input, setInput] = useState("");
-
+  
   useEffect(() => {
-    console.log("supportsVibrationAPI", supportsVibrationAPI);
+    const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+    const host = window.location.host; 
+    const wsUrl = `${protocol}://${host}/ws`; // ou un sous-domaine : `${protocol}://ws.${host}`
+    // console.log("supportsVibrationAPI", supportsVibrationAPI);
     
     const ws = new WebSocket(wsUrl); // À adapter selon ton domaine
 
