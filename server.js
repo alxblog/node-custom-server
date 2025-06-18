@@ -21,6 +21,14 @@ const server = http.createServer(app); // Création manuelle du serveur HTTP
 
 const wss = new WebSocketServer({ server }); // Création du serveur WebSocket lié au serveur HTTP
 
+app.all("/relay", async (req, res)=> {
+  try {
+    const resp = await fetch('http://192.168.40.17:3030/dashboard')
+    res.send('OK')
+  } catch (error) {
+    res.send('petite erreur')
+  }
+})
 // Broadcast vers tous les clients connectés
 app.post("/broadcast", (req, res) => {
   const message = JSON.stringify(req.body); // Convertit les données en JSON string
